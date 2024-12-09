@@ -32,7 +32,7 @@ chmod 0440 /etc/sudoers.d/$USRNAME
 # Switch to the new user
 sudo -i -u $USRNAME bash << EOF
 
-#export TICSAUTHTOKEN - we need this to be injected to the user environment
+export TICSAUTHTOKEN
 
 # Download and install TiCS
 curl -o /home/$USRNAME/install_tics.sh -L "https://canonical.tiobe.com/tiobeweb/TICS/api/public/v1/fapi/installtics/Script?cfg=default&platform=linux&url=https://canonical.tiobe.com/tiobeweb/TICS/"
