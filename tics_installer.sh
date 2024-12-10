@@ -43,3 +43,4 @@ source /home/$USRNAME/.profile
 
 # Run additional TiCS maintenance commands
 TICSMaintenance -checkchk
+EOF
