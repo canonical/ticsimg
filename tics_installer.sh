@@ -24,8 +24,8 @@ apt-get install -y \
 USRID=1001
 GRPID=1001
 USRNAME="runner"
-groupadd -g $GRPID -o $USRNAME
-useradd -m -u $USRID -g $GRPID -o -s /bin/bash $USRNAME
+getent group $GRPID || groupadd -g $GRPID -o $USRNAME
+id -u $USRID &>/dev/null || useradd -m -u $USRID -g $GRPID -o -s /bin/bash $USRNAME
 echo "$USRNAME ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$USRNAME
 chmod 0440 /etc/sudoers.d/$USRNAME
 
