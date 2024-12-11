@@ -2,7 +2,7 @@
 
 # Ensure the script is run with superuser privileges
 if [[ $EUID -ne 0 ]]; then
-   echo "This script must be run as root" 
+   echo "This script must be run as root"
    exit 1
 fi
 
@@ -32,7 +32,7 @@ chmod 0440 /etc/sudoers.d/$USRNAME
 # Switch to the new user
 sudo -i -u $USRNAME bash << EOF
 
-export TICSAUTHTOKEN
+export TICSAUTHTOKEN=$TICSAUTHTOKEN
 
 # Download and install TiCS
 curl -o /home/$USRNAME/install_tics.sh -L "https://canonical.tiobe.com/tiobeweb/TICS/api/public/v1/fapi/installtics/Script?cfg=default&platform=linux&url=https://canonical.tiobe.com/tiobeweb/TICS/"
