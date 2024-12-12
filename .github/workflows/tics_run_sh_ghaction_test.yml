@@ -1,0 +1,28 @@
+name: TICS run self-hosted test (github-action)
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: stg-tiobe
+        
+    steps:
+    - name: Checkout the project
+      uses: actions/checkout@v4
+
+    - name: Build the project
+      run: |
+           cd test
+
+    - name: Run TICS analysis with github-action
+      uses: tiobe/tics-github-action@v3
+      with:
+        mode: qserver
+        project: testimage
+        branchdir: .
+        viewerUrl: https://canonical.tiobe.com/tiobeweb/TICS/api/cfg?name=default
+        ticsAuthToken: ${{ secrets.TICSAUTHTOKEN }}
+        installTics: false
