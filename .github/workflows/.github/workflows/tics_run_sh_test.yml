@@ -1,0 +1,23 @@
+name: TICS run self-hosted test (script)
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: stg-tiobe
+            
+    steps:
+    - name: Checkout the project
+      uses: actions/checkout@v4
+
+    - name: Run TICS analysis with the script
+      run: |
+           set -x
+           export TICSAUTHTOKEN="${{ secrets.TICSAUTHTOKEN }}"
+           cd test/
+           TICSQServer -project testimage -tmpdir /tmp/tics -branchdir .
