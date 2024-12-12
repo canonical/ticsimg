@@ -18,5 +18,4 @@ jobs:
            set -x
            export TICSAUTHTOKEN="${{ secrets.TICSAUTHTOKEN }}"
            cd test/
-           source /home/ubuntu/.profile
            TICSQServer -project testimage -tmpdir /tmp/tics -branchdir .
