@@ -21,13 +21,7 @@ apt-get install -y \
     pylint
 
 # Set up a new user
-USRID=1001
-GRPID=1001
-USRNAME="runner"
-getent group $GRPID || groupadd -g $GRPID -o $USRNAME
-id -u $USRID &>/dev/null || useradd -m -u $USRID -g $GRPID -o -s /bin/bash $USRNAME
-echo "$USRNAME ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$USRNAME
-chmod 0440 /etc/sudoers.d/$USRNAME
+USRNAME="ubuntu"
 
 # Switch to the new user
 sudo -i -u $USRNAME bash << EOF
