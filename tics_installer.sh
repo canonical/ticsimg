@@ -20,10 +20,10 @@ apt-get install -y \
     flake8 \
     pylint
 
-# Set up a new user
+# Leverage existing user
 USRNAME="ubuntu"
 
-# Switch to the new user
+# Switch to the user
 sudo -i -u $USRNAME bash << EOF
 
 export TICSAUTHTOKEN=$ticsauthtoken
