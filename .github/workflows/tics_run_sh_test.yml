@@ -15,7 +15,6 @@ jobs:
 
     - name: Run TICS analysis with the script
       run: |
-           whoami
            set -x
            export TICSAUTHTOKEN="${{ secrets.TICSAUTHTOKEN }}"
            cd test/
