@@ -15,7 +15,6 @@ jobs:
 
     - name: Run TICS analysis with a script
       run: |
-           set -x
            export TICSAUTHTOKEN="${{ secrets.TICSAUTHTOKEN }}"
            cat ~/.bashrc
            cd test/
