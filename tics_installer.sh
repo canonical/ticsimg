@@ -37,4 +37,11 @@ source /home/$USRNAME/.profile
 
 # Run additional TiCS maintenance commands
 TICSMaintenance -checkchk
+
+# Manually set the TICS enviroment/path variables to .bashrc so the action can inherit them without sourcing
+echo 'export PATH=/home/ubuntu/TICS/Wrapper/BuildServer:$PATH
+export PATH=/home/ubuntu/TICS/Wrapper/Client:$PATH
+export TICS="https://canonical.tiobe.com/tiobeweb/TICS/api/cfg?name=default"
+export TICSPROJECT="auto"' >> ~/.bashrc
+
 EOF
