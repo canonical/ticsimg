@@ -13,7 +13,7 @@ jobs:
     - name: Checkout the project
       uses: actions/checkout@v4
 
-    - name: Run TICS analysis with the script
+    - name: Run TICS analysis with a script
       run: |
            set -x
            export TICSAUTHTOKEN="${{ secrets.TICSAUTHTOKEN }}"
