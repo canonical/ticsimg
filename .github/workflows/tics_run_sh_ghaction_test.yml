@@ -15,7 +15,6 @@ jobs:
 
     - name: Build the project
       run: |
-           source /home/ubuntu/.profile
            cd test
 
     - name: Run TICS analysis with github-action
