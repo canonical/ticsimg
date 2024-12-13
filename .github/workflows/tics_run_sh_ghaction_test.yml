@@ -13,9 +13,10 @@ jobs:
     - name: Checkout the project
       uses: actions/checkout@v4
 
-    - name: Build the project
+    - name: Prepare the project
       run: |
            cd test
+           source /home/ubuntu/.profile
 
     - name: Run TICS analysis with github-action
       uses: tiobe/tics-github-action@v3
