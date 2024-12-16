@@ -17,4 +17,5 @@ jobs:
       run: |
            export TICSAUTHTOKEN="${{ secrets.TICSAUTHTOKEN }}"
            cd test/
+           source ~/.bashrc
            TICSQServer -project testimage -tmpdir /tmp/tics -branchdir .
