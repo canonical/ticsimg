@@ -16,6 +16,7 @@ jobs:
     - name: Run TICS analysis with a script
       run: |
            export TICSAUTHTOKEN="${{ secrets.TICSAUTHTOKEN }}"
+           #check
            cat ~/.bashrc
            cd test/
            TICSQServer -project testimage -tmpdir /tmp/tics -branchdir .
