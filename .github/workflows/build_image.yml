@@ -1,7 +1,7 @@
 name: TICS image CI
 
 on:
-   push:
+  workflow_dispatch: # Allows manual triggering
 
 jobs:
    build_and_publish: 
