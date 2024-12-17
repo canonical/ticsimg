@@ -1,10 +1,7 @@
 name: TICS run docker test (github-action)
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_dispatch: # Allows manual triggering
 
 jobs:
   build:
