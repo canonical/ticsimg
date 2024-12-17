@@ -9,12 +9,7 @@ jobs:
     runs-on: stg-tiobe
       
     steps:
-    - name: Prepare the project
-      run: |
-           echo $TICS
-           echo $TICSPROJECT
-           echo $PATH
-           
+    
     - name: Checkout the project
       uses: actions/checkout@v4
 
