@@ -7,11 +7,6 @@ jobs:
   build:
 
     runs-on: stg-tiobe
-
-    env:
-      PATH: $HOME/TICS/Wrapper/BuildServer:$HOME/TICS/Wrapper/Client:$PATH
-      TICS: "https://canonical.tiobe.com/tiobeweb/TICS/api/cfg?name=default"
-      TICSPROJECT: "auto"
       
     steps:
     - name: Prepare the project
@@ -35,4 +30,4 @@ jobs:
         branchdir: .
         viewerUrl: https://canonical.tiobe.com/tiobeweb/TICS/api/cfg?name=default
         ticsAuthToken: ${{ secrets.TICSAUTHTOKEN }}
-        installTics: false
+        installTics: true
