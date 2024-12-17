@@ -9,7 +9,7 @@ jobs:
     runs-on: stg-tiobe
 
     env:
-      PATH: ~/TICS/Wrapper/BuildServer:~/TICS/Wrapper/Client:$PATH
+      PATH: $HOME/TICS/Wrapper/BuildServer:$HOME/TICS/Wrapper/Client:$PATH
       TICS: "https://canonical.tiobe.com/tiobeweb/TICS/api/cfg?name=default"
       TICSPROJECT: "auto"
       
