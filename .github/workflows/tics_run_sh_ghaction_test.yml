@@ -1,8 +1,7 @@
 name: TICS run self-hosted test (github-action)
 
 on:
-  push:
-    branches: [ "main" ]
+  workflow_dispatch: # Allows manual triggering
 
 jobs:
   build:
