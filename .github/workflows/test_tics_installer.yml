@@ -1,0 +1,15 @@
+name: TICS image CI
+
+on:
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+   build_and_publish: 
+      runs-on: ubuntu-latest
+      steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Execute the tics_installer.sh script
+        run: |
+             ./tics_installer.sh
