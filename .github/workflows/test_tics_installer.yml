@@ -1,5 +1,4 @@
-name: TICS image CI
-
+name: Test tics_installer.sh
 on:
   workflow_dispatch: # Allows manual triggering
 
