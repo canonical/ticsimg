@@ -12,5 +12,6 @@ jobs:
 
       - name: Execute the tics_installer.sh script
         run: |
+             sudo su
              chmod +x tics_installer.sh
              ./tics_installer.sh
