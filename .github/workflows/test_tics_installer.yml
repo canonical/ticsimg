@@ -11,8 +11,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Execute the tics_installer.sh script
+        env:
+             ticsauthtoken: "${{ secrets.TICSAUTHTOKEN }}"
         run: |
              sudo useradd -m "ubuntu"
              chmod +x tics_installer.sh
-             export ticsauthtoken="${{ secrets.TICSAUTHTOKEN }}"
              sudo ./tics_installer.sh
