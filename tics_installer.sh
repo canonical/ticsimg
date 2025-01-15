@@ -24,7 +24,7 @@ apt-get install -y \
 USRNAME="ubuntu"
 
 # Switch to the user
-sudo -i -u -E $USRNAME bash << EOF
+sudo -i -u $USRNAME bash << EOF
 
 export TICSAUTHTOKEN=$ticsauthtoken
 
