@@ -12,4 +12,5 @@ jobs:
 
       - name: Execute the tics_installer.sh script
         run: |
+             chmod +x tics_installer.sh
              ./tics_installer.sh
