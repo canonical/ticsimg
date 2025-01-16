@@ -6,7 +6,7 @@ on:
 jobs:
   build:
 
-    runs-on: stg-tiobe
+    runs-on: tiobe
             
     steps:
     - name: Checkout the project
