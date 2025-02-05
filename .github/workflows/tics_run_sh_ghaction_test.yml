@@ -13,10 +13,6 @@ jobs:
     - name: Checkout the project
       uses: actions/checkout@v4
 
-    - name: Prepare the project
-      run: |
-           cd test
-
     - name: Run TICS analysis with github-action
       uses: tiobe/tics-github-action@v3
       with:
