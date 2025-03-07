@@ -1,0 +1,27 @@
+name: daily TICS run test to validate the self-hosted runner (using github-action)
+
+on:
+  workflow_dispatch:
+    schedule:
+    - cron: '20 8 * * *'
+
+jobs:
+  build:
+
+    #runs-on: [self-hosted, linux, amd64, tiobe, jammy]
+    runs-on: [self-hosted-linux-amd64-jammy-staging] 
+
+    steps:
+    
+    - name: Checkout the project
+      uses: actions/checkout@v4
+
+    - name: Run TICS analysis with github-action
+      uses: tiobe/tics-github-action@v3
+      with:
+        mode: qserver
+        project: testimage
+        branchdir: .
+        viewerUrl: https://canonical.tiobe.com/tiobeweb/TICS/api/cfg?name=default
+        ticsAuthToken: ${{ secrets.TICSAUTHTOKEN }}
+        installTics: true
