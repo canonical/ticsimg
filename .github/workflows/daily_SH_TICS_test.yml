@@ -2,7 +2,7 @@ name: daily TICS run test to validate the self-hosted runner (using github-actio
 
 on:
   workflow_dispatch:
-    schedule:
+  schedule:
     - cron: '20 8 * * *'
 
 jobs:
