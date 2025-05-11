@@ -1,0 +1,36 @@
+name: TICS run for quality gate self-hosted test (github-action)
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  merge_group:
+    types: [checks_requested]
+  workflow_dispatch:
+
+#concurrency:
+#  group: ${{ github.workflow }}-${{ github.event.number && format('pr{0}', github.event.number) || github.ref }}
+  # Don't interrupt QServer runs as that can corrupt the TICS database
+#  cancel-in-progress: ${{ github.event_name != 'push' }}
+  
+jobs:
+  build:
+
+    runs-on: [self-hosted, linux, amd64, tiobe, jammy]
+      
+    steps:
+    
+    - name: Checkout the project
+      uses: actions/checkout@v4
+
+    - name: Run TICS analysis with github-action
+      uses: tiobe/tics-github-action@v3
+      with:
+        mode: client
+        project: testimage
+        branchdir: .
+        viewerUrl: https://canonical.tiobe.com/tiobeweb/TICS/api/cfg?name=default
+        ticsAuthToken: ${{ secrets.TICSAUTHTOKEN }}
+        installTics: true
