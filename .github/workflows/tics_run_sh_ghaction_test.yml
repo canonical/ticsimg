@@ -6,7 +6,7 @@ on:
 jobs:
   build:
 
-    runs-on: [self-hosted, amd64, tiobe, jammy]
+    runs-on: [self-hosted, amd64, tiobe, noble]
       
     steps:
     
