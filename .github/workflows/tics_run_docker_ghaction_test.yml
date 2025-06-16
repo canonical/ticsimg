@@ -23,7 +23,7 @@ jobs:
 
     - name: Build the project
       run: |
-           cd test
+           cd code
            make
 
     - name: Run TICS analysis with github-action
