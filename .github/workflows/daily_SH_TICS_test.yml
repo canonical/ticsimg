@@ -9,7 +9,7 @@ jobs:
   build:
 
     #runs-on: [self-hosted, linux, amd64, tiobe, jammy]
-    runs-on: [self-hosted-linux-amd64-jammy-staging] 
+    runs-on: [self-hosted-linux-amd64-noble-staging] 
 
     steps:
     
