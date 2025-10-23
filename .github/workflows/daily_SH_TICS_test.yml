@@ -9,8 +9,8 @@ jobs:
   build:
 
     #runs-on: [self-hosted, linux, amd64, tiobe, jammy]
-    runs-on: [self-hosted-linux-amd64-noble-staging] 
-
+    #runs-on: [self-hosted-linux-amd64-noble-staging] 
+    runs-on: [self-hosted-linux-amd64-noble-tiobe]
     steps:
     
     - name: Checkout the project
