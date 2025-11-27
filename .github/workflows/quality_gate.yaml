@@ -32,6 +32,8 @@ jobs:
 
     - if: ${{ github.event.inputs.detach == 'true' }}
       name: Detach TICS QServer to prevent "project already connected" issue
+      env:
+            TICSAUTHTOKEN: ${{ secrets.TICSAUTHTOKEN }}
       run: |
             source ~/.profile
             TICSMaintenance -project ${PROJECT} -detach
