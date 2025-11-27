@@ -34,7 +34,7 @@ jobs:
       name: Detach TICS QServer to prevent "project already connected" issue
       run: |
             source ~/.profile
-            ${TICS_PATH}/TICSMaintenance -project ${PROJECT} -detach
+            TICSMaintenance -project ${PROJECT} -detach
 
     - name: Run TICS analysis with github-action
       uses: tiobe/tics-github-action@v3
