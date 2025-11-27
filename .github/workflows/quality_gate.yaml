@@ -9,11 +9,16 @@ on:
   merge_group:
     types: [checks_requested]
   workflow_dispatch:
+    inputs:
+      detach:
+        description: "Detach TICS QServer before the run"
+        required: false
+        default: "false"
 
-#concurrency:
-#  group: ${{ github.workflow }}-${{ github.event.number && format('pr{0}', github.event.number) || github.ref }}
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number && format('pr{0}', github.event.number) || github.ref }}
   # Don't interrupt QServer runs as that can corrupt the TICS database
-#  cancel-in-progress: ${{ github.event_name != 'push' }}
+  cancel-in-progress: ${{ github.event_name != 'push' }}
   
 jobs:
   build:
@@ -24,6 +29,12 @@ jobs:
     
     - name: Checkout the project
       uses: actions/checkout@v4
+
+    - if: ${{ github.event.inputs.detach == 'true' }}
+      name: Detach TICS QServer to prevent "project already connected" issue
+      run: |
+            source ~/.profile
+            ${TICS_PATH}/TICSMaintenance -project ${PROJECT} -detach
 
     - name: Run TICS analysis with github-action
       uses: tiobe/tics-github-action@v3
