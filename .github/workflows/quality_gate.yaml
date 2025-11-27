@@ -36,7 +36,7 @@ jobs:
             TICSAUTHTOKEN: ${{ secrets.TICSAUTHTOKEN }}
       run: |
             source ~/.profile
-            TICSMaintenance -project ${PROJECT} -detach
+            TICSMaintenance -project testimage -detach
 
     - name: Run TICS analysis with github-action
       uses: tiobe/tics-github-action@v3
