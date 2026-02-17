@@ -1,0 +1,9 @@
+name: CI
+on:
+  workflow_dispatch: # Allows manual triggering
+jobs:
+  build:
+    runs-on: [self-hosted, amd64, tiobe, noble]
+    steps:
+      - name: uname -a
+        run: uname -a
