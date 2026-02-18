@@ -9,5 +9,3 @@ jobs:
         run: uname -a
       - name: check grub
         run: sudo grep -E "submenu|menuentry" /boot/grub/grub.cfg
-      - name: install 6.14
-        run: sudo apt-get install -y linux-generic-6.14
