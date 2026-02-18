@@ -1,4 +1,4 @@
-name: CI
+name: Kernel Test
 on:
   workflow_dispatch: # Allows manual triggering
 jobs:
@@ -8,4 +8,4 @@ jobs:
       - name: uname -a
         run: uname -a
       - name: check grub
-        run: grep -E "submenu|menuentry" /boot/grub/grub.cfg
+        run: sudo grep -E "submenu|menuentry" /boot/grub/grub.cfg
