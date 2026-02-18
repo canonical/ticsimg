@@ -21,7 +21,7 @@ apt-get install -y \
     pylint
 
 # Kernel issue - workaround for 6.17.0
-if [[ $(uname -r | cut -d '-' -f 1) == "6.17.0" ]]; then
+if dpkg -l linux-generic-hwe-24.04 | grep -q "^ii"; then
     echo "Kernel 6.17.0 detected."
     apt-get install -y linux-generic-6.14
 
