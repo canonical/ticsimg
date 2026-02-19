@@ -31,10 +31,24 @@ if dpkg -l linux-generic-hwe-24.04 | grep -q "^ii"; then
         zipl
     else
         # Pin GRUB to boot the 6.14 kernel instead of the newer HWE kernel
-        KERNEL_ENTRY=$(sudo grep -oP "menuentry '\K[^']*6\.14[^']*" /boot/grub/grub.cfg | head -1)
-        sed -i 's/^GRUB_DEFAULT=.*/GRUB_DEFAULT=saved/' /etc/default/grub
-        grub-set-default "Advanced options for Ubuntu>${KERNEL_ENTRY}"
-        update-grub
+        # Capture the IDs instead of the Titles to ensure the submenu jump works in all environments
+        # Field 4 in 'submenu' or 'menuentry' lines is the unique ID (gnulinux-...)
+        SUBMENU_ID=$(grep "^submenu" /boot/grub/grub.cfg | cut -d "'" -f 4 | head -n 1)
+        KERNEL_ID=$(grep "menuentry '" /boot/grub/grub.cfg | grep "6.14" | grep -v "recovery" | cut -d "'" -f 4 | head -n 1)
+        
+        if [ -n "$SUBMENU_ID" ] && [ -n "$KERNEL_ID" ]; then
+           # Pinning via ID hierarchy: 'ParentID>ChildID'
+           sed -i 's/^GRUB_DEFAULT=.*/GRUB_DEFAULT=saved/' /etc/default/grub
+           grub-set-default "${SUBMENU_ID}>${KERNEL_ID}"
+           update-grub
+           
+           # Verification for the logs
+           echo "GRUB successfully pinned to: ${SUBMENU_ID}>${KERNEL_ID}"
+           grub-editenv list | grep saved_entry
+        else
+           echo "Error: Dynamic ID detection for Kernel 6.14 failed."
+           exit 1
+        fi
     fi
 
     # Prevent apt upgrade from pulling in a newer HWE kernel
