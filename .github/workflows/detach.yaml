@@ -1,0 +1,22 @@
+name: TICS run self-hosted test (script)
+
+on:
+  workflow_dispatch:
+    inputs:
+      project_name:
+        description: "Enter project name"
+        required: true
+jobs:
+  build:
+
+    runs-on: [self-hosted, linux, amd64, tiobe, noble]
+            
+    steps:
+    - name: Checkout the project
+      uses: actions/checkout@v4
+
+    - name: Run TICS analysis with a script
+      run: |
+           export TICSAUTHTOKEN="${{ secrets.TICSAUTHTOKEN }}"
+           source ~/.profile
+           TICSMaintenance -project ${{ github.event.inputs.project_name }} -detach
