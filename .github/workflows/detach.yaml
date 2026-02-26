@@ -1,4 +1,4 @@
-name: TICS run self-hosted test (script)
+name: TICS detach project
 
 on:
   workflow_dispatch:
