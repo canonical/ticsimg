@@ -2,8 +2,9 @@
 
 int main() { 
     /* Create and uninitialized variable */
-    int a;
-    a += 1;
+    int a=1;
+    chat b;
+    a = a + b;
     printf("Hello, TICS!\n");
     return 0;
 }
