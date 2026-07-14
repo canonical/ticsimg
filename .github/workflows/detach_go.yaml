@@ -1,0 +1,24 @@
+name: TICS detach Go project
+
+on:
+  workflow_dispatch:
+    inputs:
+      project_name:
+        description: "Enter project name"
+        required: true
+jobs:
+  build:
+
+    runs-on: [self-hosted, linux, amd64, tiobe, noble]
+            
+    steps:
+    - name: Checkout the project
+      uses: actions/checkout@v4
+
+    - name: Run TICS analysis with a script
+      run: |
+           export TICSAUTHTOKEN="${{ secrets.TICSAUTHTOKEN }}"
+           source ~/.profile
+           curl --silent --show-error "https://canonical.tiobe.com/tiobeweb/TICS/api/public/v1/fapi/installtics/Script?cfg=GoProjects&platform=linux&url=https://canonical.tiobe.com/tiobeweb/TICS/" > tics.sh
+           . <(cat tics.sh)
+           TICSMaintenance -project ${{ github.event.inputs.project_name }} -detach
